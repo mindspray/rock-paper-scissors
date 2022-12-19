@@ -15,10 +15,10 @@ function getPlayerSelection() {
 }
 
 function getComputerChoice() {
-  let rand = Math.random();
-  return rand < 0.33
+  let rand = Math.floor(Math.random() * 3);
+  return rand === 0
     ? "rock"
-    : rand >= 0.33 && rand < 0.66
+    : rand === 1
     ? "paper"
     : "scissors";
 }
@@ -27,18 +27,17 @@ function playRound(
   playerSelection = getPlayerSelection(),
   computerSelection = getComputerChoice()
 ) {
-  // if (
-  //   playerSelection !== "rock" &&
-  //   playerSelection !== "paper" &&
-  //   playerSelection !== "scissors"
-  // ) {
-  //   console.log("Choose a valid option");
-  //   playRound();
-  // } else {
   console.log("Shoot!");
   console.log(
     `You chose: ${playerSelection}. Computer chose: ${computerSelection}`
   );
+
+	// Potential refactor:
+	// Make choices = ["rock", "paper", "scissors"] array
+
+	// If choices[(indexof computerChoice) - 1] === choices[(indexof playerSelection)] { return "You win!"}
+	// e.g.
+	// choices[Array.indexOf("computerChoice") -1] === choices[Array.indexOf("playerSelection")] { return "You win!"}
 
   // non-tie possibiliities
   // rock v paper | paper
