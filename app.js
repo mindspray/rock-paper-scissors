@@ -69,28 +69,26 @@ function createElement(element, className = "") {
 function init() {
   const [buttonArray, elArray] = [[], []];
   const rps = ["Rock", "Paper", "Scissors"];
-  const elems = ["button", "div", "p"];
-  const elemsCount = [3, 1, 4];
+  const elemsAndQtys = [["button", 3], ["div", 1], ["p", 4]];
   const body = document.querySelector("body");
 
-  // Create elements
-  for(let i = 0; i < elems.length; i++) {
-    for(let j = 0; j < elemsCount[i]; j++){
-      elArray.push(createElement(`${elems[i]}`, `${elems[i] + (j+1)}`));
-      if (elems[i] === "button") {
+  //Create elements.
+  for(let i = 0; i < elemsAndQtys.length; i++) {
+    for(let j = 0; j < elemsAndQtys[i][1]; j++) {
+      elArray.push(createElement(`${elemsAndQtys[i][0]}`, `${elemsAndQtys[i][0] + (j+1)}`));
+      if(elemsAndQtys[i][0] === "button") {
         buttonArray.push(elArray[j]);
         buttonArray[j].textContent = rps[j];
-        buttonArray[j].addEventListener("click", (e)=>playRound(e.target.textContent));
-      } else if (elems[i] === "div") {
-        body.appendChild(elArray.find(e => e.tagName == "DIV"));
-      } 
-      else if (elems[i] === "p") {
+        buttonArray[j].addEventListener("click", (e) => playRound(e.target.textContent));
+      } else if (elemsAndQtys[i][0] === "div") {
+        body.appendChild(elArray.find(e => e.tagName === "DIV"));
+      } else if (elemsAndQtys[i][0] === "p") {
         let divEl = elArray.find(e => e.tagName === "DIV");
         divEl.appendChild(elArray[(i+1) + (j+1)]);
       }
     }
   }
-  
+
   // Append 3 buttons to body
   for (let i = 0; i < buttonArray.length; i++) {
     body.appendChild(buttonArray[i]);
