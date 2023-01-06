@@ -79,10 +79,10 @@ function createElement(element, className = "") {
 function init() {
   const [elArray] = [[], []];
   const rps = ["Rock", "Paper", "Scissors"];
-  const elemsAndQtys = [["div", 1], ["p", 4], ["button", 3]];
-  const game = document.querySelector(".game");
+  const elemsAndQtys = [["div", 3], ["p", 4], ["button", 3]];
+  const container = document.querySelector(".container");
 
-  //Create elements.
+  //Create elements
   for(let i = 0; i < elemsAndQtys.length; i++) {
     for(let j = 0; j < elemsAndQtys[i][1]; j++) {
       elArray.push(createElement(`${elemsAndQtys[i][0]}`, `${elemsAndQtys[i][0] + (j+1)}`));
@@ -93,30 +93,31 @@ function init() {
   let buttonCount = 0;
   elArray.forEach(element => {
     if (element.tagName === "DIV") {
-      game.appendChild(element);
+      container.appendChild(element);
     } else if (element.tagName === "P") {
       // Maybe change to messageDiv
-      document.querySelector(".div1").appendChild(element);
+      document.querySelector(".div2").appendChild(element);
     } else if (element.tagName === "BUTTON") {
       // Maybe change to buttonDiv
       element.textContent = rps[buttonCount];
       ++buttonCount;
       element.addEventListener("click", e => playRound(e.target.textContent));
-      document.querySelector(".div1").appendChild(element);
+      document.querySelector(".div3").appendChild(element);
     }
     }
   )
-  /* THIS NEEDS TO BE VERIFIED IT WAS ADDED BY ABOVE CODE
-  buttonArray[j].textContent = rps[j]; // Possibly added.
-  buttonArray[j].addEventListener("click", (e) => playRound(e.target.textContent)); // Possibly added
-  */
 
   console.log(elArray);
+  // container.appendChild(document.querySelector(".div1"));
+  document.querySelector(".div1").append(document.querySelector(".div2"), document.querySelector(".div3"));
 
-  const div1 = document.querySelector(".div1");
-  game.appendChild(document.querySelector(".div1"));
-
+  // Set dom proprties to querySelected elements
   elArray.forEach(element => dom._vars[element.className] = document.querySelector(`.${element.className}`));
+
+  // Set friendlier name for div classes
+  dom.get("div1").className = "gameDiv";
+  dom.get("div2").className = "msgdiv";
+  dom.get("div3").className = "btnDiv";
 
   console.log(dom);
 }
@@ -129,21 +130,6 @@ const dom = {
 };
 
 init();
-
-// const dom = {
-//   _vars: {
-//     game: document.querySelector(".game"),
-//     div1: document.querySelector(".div1"),
-//     p1: document.querySelector(".p1"),
-//     p2: document.querySelector(".p2"),
-//     p3: document.querySelector(".p3"),
-//     p4: document.querySelector(".p4"),
-//   },
-  
-//   get(name) {
-//     return this._vars[name];
-//   },
-// }
 
 const state = {
   _vars: {
