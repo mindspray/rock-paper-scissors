@@ -13,15 +13,44 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.statBar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pDiv {
+  margin-left: 10px;
+}
+.pScore {
+  font-size: 4em;
+}
+.cDiv {
+  text-align: right;
+  margin-right: 10px;
+}
+.cScore {
+  font-size: 4em;
+}
+.roundDiv {
+  background-color: rgba(203, 152, 152, 0.738);
+  min-width: fit-content;
+  padding: 20px 40px;
+  border: 5px solid rgb(227, 224, 54);  
+  text-align: center;
+}
+.roundCount {
+  font-size: 5em;
 }
 
 .gameDiv {
   display: flex;
   flex-direction: column;
   min-width: 600px;
+  align-items: center;
 }
 
 .msgDiv, .btnDiv {
@@ -31,10 +60,11 @@ body {
   max-width: 100%;
 }
 .msgDiv {
+  justify-content: center;
   flex-wrap: wrap;
   display: flex;
   flex-direction: column;
-  
+  min-height: 200px;
 }
 
 .btnDiv {
@@ -43,10 +73,30 @@ body {
 }
 
 .button1, .button2, .button3 {
-  flex: 1 1 auto;
-  padding: 5px 20px;
-  min-width: 100px;
-  min-height: 30px;
+  flex: 0 1 auto;
+  padding: 20px 20px;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  background-position: center bottom 60%;
+  background-size: 200px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  display: inline-flex;
+  align-items: flex-end;
+}
+button:active {
+  background-color: hsl(61, 99%, 59%);
+}
+
+.button1 {
+  background-image: url("./rock.png");
+}
+.button2 {
+  background-image: url("./paper.png");
+}
+.button3 {
+  background-image: url("./scissors.png");
 }
 
 p {
