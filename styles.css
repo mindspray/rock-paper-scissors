@@ -6,7 +6,6 @@
 body {
   background-image: url("./rps-bg.png");
   background-size: cover;
-  /* background-repeat: repeat; */
 }
 
 .container {
@@ -24,6 +23,7 @@ body {
 
 .pDiv {
   margin-left: 10px;
+  min-width: 120px;
 }
 .pScore {
   font-size: 4em;
@@ -31,6 +31,7 @@ body {
 .cDiv {
   text-align: right;
   margin-right: 10px;
+  min-width: 115px;
 }
 .cScore {
   font-size: 4em;
@@ -64,7 +65,7 @@ body {
   flex-wrap: wrap;
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 280px;
 }
 
 .btnDiv {
@@ -100,10 +101,16 @@ button:active {
 }
 
 p {
+  text-align: center;
   width: 100%;
   color: white;
   font-size: 24px;
   font-weight: 900;
   font-family: sans-serif;
   text-shadow: 1px 1px 3px #000;
+}
+
+.p4 {
+  font-size: 6em;
+  margin-top: -20px;
 }
